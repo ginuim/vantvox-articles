@@ -71,12 +71,7 @@
         <div class="subtitle">文明人物的传记故事</div>
     </header>
 
-    <ul class="article-list" id="article-list">
-        <li class="article-item">
-            <a href="#" onclick="loadArticle('bio/da-yu.md'); return false;">大禹：治理洪水的人</a>
-            <div class="meta">约前2200年 · 上古时期</div>
-        </li>
-    </ul>
+    <ul class="article-list" id="article-list"></ul>
 
     <div id="article-viewer">
         <a class="back-btn" onclick="showList()">← 返回列表</a>
@@ -84,11 +79,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="articles.js"></script>
     <script>
-        const articles = [
-            { file: 'bio/da-yu.md', title: '大禹：治理洪水的人', period: '约前2200年', category: '上古时期' }
-        ];
-
         function showList() {
             document.getElementById('article-list').style.display = 'block';
             document.getElementById('article-viewer').style.display = 'none';
@@ -110,7 +102,7 @@
         listEl.innerHTML = articles.map(a => `
             <li class="article-item">
                 <a href="#" onclick="loadArticle('${a.file}'); return false;">${a.title}</a>
-                <div class="meta">${a.period} · ${a.category}</div>
+                <div class="meta">${a.period}</div>
             </li>
         `).join('');
     </script>
