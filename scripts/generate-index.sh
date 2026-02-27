@@ -19,7 +19,7 @@ for md in bio/*.md; do
             echo "," >> articles.js
         fi
         
-        echo -n "  { file: '$md', title: '$title', period: '$period' }" >> articles.js
+        echo -n "  { file: 'docs/$md', title: '$title', period: '$period' }" >> articles.js
     fi
 done
 
