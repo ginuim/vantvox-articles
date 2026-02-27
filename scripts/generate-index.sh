@@ -3,8 +3,9 @@
 
 cd "$(dirname "$0")/../docs"
 
-echo "const articles = [" > articles.js
-
+# 生成索引内容
+{
+echo "const articles = ["
 first=true
 for md in bio/*.md; do
     if [ -f "$md" ]; then
@@ -16,15 +17,18 @@ for md in bio/*.md; do
         if [ "$first" = true ]; then
             first=false
         else
-            echo "," >> articles.js
+            echo ","
         fi
         
-        echo -n "  { file: 'docs/$md', title: '$title', period: '$period' }" >> articles.js
+        echo -n "  { file: 'docs/$md', title: '$title', period: '$period' }"
     fi
 done
+echo ""
+echo "];"
+} > articles.js
 
-echo "" >> articles.js
-echo "];" >> articles.js
+# 复制到根目录
+cp articles.js ../articles.js
 
 echo "Generated:"
 cat articles.js
